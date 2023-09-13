@@ -1,5 +1,5 @@
 [flake8]
-ignore = D203
+ignore = D203,W503
 exclude =
     .git,
     __pycache__,
@@ -8,4 +8,4 @@ exclude =
     build,
     dist,
     venv
-max-complexity = 1
+max-complexity = 5
