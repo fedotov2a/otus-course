@@ -14,12 +14,7 @@ class Rectangle(Figure):
             name (str): название фигуры
         """
 
-        if not self._is_valid_values_type(side_a, side_b):
-            raise ValueError(TextException.NOT_A_NUMBER)
-
-        if not self._is_positive_values(side_a, side_b):
-            raise ValueError(TextException.ZERO_OR_NEGATIVE_SIDE)
-
+        self._validate_values(side_a, side_b)
         super().__init__(name)
 
         self._side_a = side_a
@@ -68,12 +63,7 @@ class Rectangle(Figure):
             value (int | float): сторона a
         """
 
-        if not self._is_valid_values_type(value):
-            raise ValueError(TextException.NOT_A_NUMBER)
-
-        if not self._is_positive_values(value):
-            raise ValueError(TextException.ZERO_OR_NEGATIVE_SIDE)
-
+        self._validate_values(value)
         self._side_a = value
         self._recalculate_perimeter_and_area()
 
@@ -90,11 +80,6 @@ class Rectangle(Figure):
             value (int | float): сторона b
         """
 
-        if not self._is_valid_values_type(value):
-            raise ValueError(TextException.NOT_A_NUMBER)
-
-        if not self._is_positive_values(value):
-            raise ValueError(TextException.ZERO_OR_NEGATIVE_SIDE)
-
+        self._validate_values(value)
         self._side_b = value
         self._recalculate_perimeter_and_area()

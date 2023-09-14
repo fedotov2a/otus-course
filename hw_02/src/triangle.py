@@ -16,12 +16,7 @@ class Triangle(Figure):
             name (str): название фигуры
         """
 
-        if not self._is_valid_values_type(side_a, side_b, side_c):
-            raise ValueError(TextException.NOT_A_NUMBER)
-
-        if not self._is_positive_values(side_a, side_b, side_c):
-            raise ValueError(TextException.ZERO_OR_NEGATIVE_SIDE)
-
+        self._validate_values(side_a, side_b, side_c)
         super().__init__(name)
 
         self._side_a = side_a
@@ -98,12 +93,7 @@ class Triangle(Figure):
             value (int | float): новое значение стороны a
         """
 
-        if not self._is_valid_values_type(value):
-            raise ValueError(TextException.NOT_A_NUMBER)
-
-        if not self._is_positive_values(value):
-            raise ValueError(TextException.ZERO_OR_NEGATIVE_SIDE)
-
+        self._validate_values(value)
         self._side_a = value
 
         if not self.is_valid_triangle():
@@ -124,12 +114,7 @@ class Triangle(Figure):
             value (int | float): новое значение стороны b
         """
 
-        if not self._is_valid_values_type(value):
-            raise ValueError(TextException.NOT_A_NUMBER)
-
-        if not self._is_positive_values(value):
-            raise ValueError(TextException.ZERO_OR_NEGATIVE_SIDE)
-
+        self._validate_values(value)
         self._side_b = value
 
         if not self.is_valid_triangle():
@@ -150,12 +135,7 @@ class Triangle(Figure):
             value (int | float): новое значение стороны c
         """
 
-        if not self._is_valid_values_type(value):
-            raise ValueError(TextException.NOT_A_NUMBER)
-
-        if not self._is_positive_values(value):
-            raise ValueError(TextException.ZERO_OR_NEGATIVE_SIDE)
-
+        self._validate_values(value)
         self._side_c = value
 
         if not self.is_valid_triangle():

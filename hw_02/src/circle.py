@@ -14,12 +14,7 @@ class Circle(Figure):
             name (str): название фигуры
         """
 
-        if not self._is_valid_values_type(radius):
-            raise ValueError(TextException.NOT_A_NUMBER)
-
-        if not self._is_positive_values(radius):
-            raise ValueError(TextException.ZERO_OR_NEGATIVE_RADIUS)
-
+        self._validate_values(radius)
         super().__init__(name)
 
         self._radius = radius
@@ -64,11 +59,15 @@ class Circle(Figure):
             value (int | float): новое значение радиуса круга
         """
 
-        if not self._is_valid_values_type(value):
-            raise ValueError(TextException.NOT_A_NUMBER)
-
-        if not self._is_positive_values(value):
-            raise ValueError(TextException.ZERO_OR_NEGATIVE_RADIUS)
-
+        self._validate_values(value)
         self._radius = value
         self._recalculate_perimeter_and_area()
+
+    def _validate_values(self, *values):
+        """Валидирует значение стороны фигуры"""
+
+        if not self._is_valid_values_type(*values):
+            raise ValueError(TextException.NOT_A_NUMBER)
+
+        if not self._is_positive_values(*values):
+            raise ValueError(TextException.ZERO_OR_NEGATIVE_RADIUS)

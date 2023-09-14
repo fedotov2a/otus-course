@@ -27,15 +27,9 @@ class Square(Rectangle):
             value (int | float): новая сторона квадрата
         """
 
-        if not self._is_valid_values_type(value):
-            raise ValueError(TextException.NOT_A_NUMBER)
-
-        if not self._is_positive_values(value):
-            raise ValueError(TextException.ZERO_OR_NEGATIVE_SIDE)
-
+        self._validate_values(value)
         self._side_a = value
         self._side_b = value
-
         self._recalculate_perimeter_and_area()
 
     @Rectangle.side_a.setter

@@ -108,5 +108,15 @@ class Figure(ABC):
 
     def _recalculate_perimeter_and_area(self):
         """Пересчитывает периметр и площадь"""
+
         self._perimeter = self.calculate_perimeter()
         self._area = self.calculate_area()
+
+    def _validate_values(self, *values):
+        """Валидирует значение стороны фигуры"""
+
+        if not self._is_valid_values_type(*values):
+            raise ValueError(TextException.NOT_A_NUMBER)
+
+        if not self._is_positive_values(*values):
+            raise ValueError(TextException.ZERO_OR_NEGATIVE_SIDE)
