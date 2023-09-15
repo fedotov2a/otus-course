@@ -15,6 +15,12 @@ class TestRectangle:
         ]
     )
     def test_positive_sides(self, side_a, side_b, area, perimeter):
+        """Проверяет вычисление площади и периметра фигуры
+
+        Проверка на равенство двух чисел с плавающей точкой
+        происходит с заданной точностью epsilon
+        """
+
         rectangle = Rectangle(side_a, side_b)
 
         assert rectangle.name == DefaultFigureName.RECTANGLE
@@ -28,6 +34,13 @@ class TestRectangle:
         ]
     )
     def test_change_sides_and_recalculate_area_and_perimeter(self, side_a, side_b, area, perimeter):
+        """Проверяет вычисление площади и периметра фигуры,
+        при изменении стороны фигуры
+
+        Проверка на равенство двух чисел с плавающей точкой
+        происходит с заданной точностью epsilon
+        """
+
         rectangle = Rectangle(side_a, side_b)
 
         assert rectangle.name == DefaultFigureName.RECTANGLE
@@ -55,6 +68,8 @@ class TestRectangle:
         ]
     )
     def test_set_other_name(self, side_a, side_b, area, perimeter, name):
+        """Проверяет установку названия фигуры"""
+
         rectangle = Rectangle(side_a, side_b, name=name)
 
         assert rectangle.name == name
@@ -73,6 +88,9 @@ class TestRectangle:
         ]
     )
     def test_negative_and_zero_sides(self, side_a, side_b):
+        """Проверяет выкидывание исключения,
+        при передаче аргумента с невалидными значениями
+        """
         with pytest.raises(ValueError, match=TextException.ZERO_OR_NEGATIVE_SIDE):
             rectangle = Rectangle(side_a, side_b)
 
@@ -85,8 +103,19 @@ class TestRectangle:
             (2, [5]),
             ({'5': 5}, 2),
             (None, None)
+        ],
+        ids=[
+            'string_value',
+            'bool_value',
+            'rectangle_object',
+            'list',
+            'dict',
+            'none_value',
         ]
     )
     def test_test_invalid_type_of_sides(self, side_a, side_b):
+        """Проверяет выкидывание исключения,
+        при передаче аргумента с невалидным типом
+        """
         with pytest.raises(ValueError, match=TextException.NOT_A_NUMBER):
             rectangle = Rectangle(side_a, side_b)

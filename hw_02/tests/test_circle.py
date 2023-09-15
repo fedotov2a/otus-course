@@ -14,6 +14,12 @@ class TestCircle:
         ]
     )
     def test_positive_radius(self, radius, area, perimeter):
+        """Проверяет вычисление площади и периметра фигуры
+
+        Проверка на равенство двух чисел с плавающей точкой
+        происходит с заданной точностью epsilon
+        """
+
         circle = Circle(radius)
 
         assert circle.name == DefaultFigureName.CIRCLE
@@ -27,6 +33,13 @@ class TestCircle:
         ]
     )
     def test_change_radius_and_recalculate_area_and_perimeter(self, radius, area, perimeter):
+        """Проверяет вычисление площади и периметра фигуры,
+        при изменении радиуса
+
+        Проверка на равенство двух чисел с плавающей точкой
+        происходит с заданной точностью epsilon
+        """
+
         circle = Circle(radius)
 
         assert circle.name == DefaultFigureName.CIRCLE
@@ -47,6 +60,8 @@ class TestCircle:
         ]
     )
     def test_set_other_name(self, radius, area, perimeter, name):
+        """Проверяет установку названия фигуры"""
+
         circle = Circle(radius, name=name)
 
         assert circle.name == name
@@ -62,6 +77,9 @@ class TestCircle:
         ]
     )
     def test_negative_and_zero_radius(self, radius):
+        """Проверяет выкидывание исключения,
+        при передаче аргумента с невалидным значением
+        """
         with pytest.raises(ValueError, match=TextException.ZERO_OR_NEGATIVE_RADIUS):
             circle = Circle(radius)
 
@@ -74,8 +92,19 @@ class TestCircle:
             Circle(1),
             [5],
             {'5': 5}
+        ],
+        ids=[
+            'string_value',
+            'bool_value',
+            'none_value',
+            'circle_object',
+            'list',
+            'dict',
         ]
     )
     def test_invalid_type_of_radius(self, radius):
+        """Проверяет выкидывание исключения,
+        при передаче аргумента с невалидным типом
+        """
         with pytest.raises(ValueError, match=TextException.NOT_A_NUMBER):
             circle = Circle(radius)

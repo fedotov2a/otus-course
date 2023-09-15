@@ -18,7 +18,8 @@ class Circle(Figure):
         super().__init__(name)
 
         self._radius = radius
-        self._recalculate_perimeter_and_area()
+        self._perimeter = self.calculate_perimeter()
+        self._area = self.calculate_area()
 
     def __str__(self):
         """Возвращает строковое представление объекта"""
@@ -61,7 +62,8 @@ class Circle(Figure):
 
         self._validate_values(value)
         self._radius = value
-        self._recalculate_perimeter_and_area()
+        self._perimeter = self.calculate_perimeter()
+        self._area = self.calculate_area()
 
     def _validate_values(self, *values):
         """Валидирует значение стороны фигуры"""

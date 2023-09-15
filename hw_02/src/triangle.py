@@ -26,7 +26,8 @@ class Triangle(Figure):
         if not self.is_valid_triangle():
             raise ValueError(f'{TextException.INVALID_TRIANGLE} {self!s}')
 
-        self._recalculate_perimeter_and_area()
+        self._perimeter = self.calculate_perimeter()
+        self._area = self.calculate_area()
 
     def __str__(self):
         """Возвращает строковое представление объекта"""
@@ -99,7 +100,8 @@ class Triangle(Figure):
         if not self.is_valid_triangle():
             raise ValueError(f'{TextException.INVALID_TRIANGLE} {self!s}')
 
-        self._recalculate_perimeter_and_area()
+        self._perimeter = self.calculate_perimeter()
+        self._area = self.calculate_area()
 
     @property
     def side_b(self):
@@ -120,7 +122,8 @@ class Triangle(Figure):
         if not self.is_valid_triangle():
             raise ValueError(f'{TextException.INVALID_TRIANGLE} {self!s}')
 
-        self._recalculate_perimeter_and_area()
+        self._perimeter = self.calculate_perimeter()
+        self._area = self.calculate_area()
 
     @property
     def side_c(self):
@@ -141,4 +144,5 @@ class Triangle(Figure):
         if not self.is_valid_triangle():
             raise ValueError(f'{TextException.INVALID_TRIANGLE} {self!s}')
 
-        self._recalculate_perimeter_and_area()
+        self._perimeter = self.calculate_perimeter()
+        self._area = self.calculate_area()

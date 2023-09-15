@@ -20,7 +20,8 @@ class Rectangle(Figure):
         self._side_a = side_a
         self._side_b = side_b
 
-        self._recalculate_perimeter_and_area()
+        self._perimeter = self.calculate_perimeter()
+        self._area = self.calculate_area()
 
     def __str__(self):
         """Возвращает строковое представление объекта"""
@@ -65,7 +66,8 @@ class Rectangle(Figure):
 
         self._validate_values(value)
         self._side_a = value
-        self._recalculate_perimeter_and_area()
+        self._perimeter = self.calculate_perimeter()
+        self._area = self.calculate_area()
 
     @property
     def side_b(self):
@@ -82,4 +84,5 @@ class Rectangle(Figure):
 
         self._validate_values(value)
         self._side_b = value
-        self._recalculate_perimeter_and_area()
+        self._perimeter = self.calculate_perimeter()
+        self._area = self.calculate_area()

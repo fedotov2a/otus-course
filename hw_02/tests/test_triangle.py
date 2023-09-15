@@ -18,6 +18,12 @@ class TestTriangle:
         ]
     )
     def test_positive_sides(self, side_a, side_b, side_c, area, perimeter):
+        """Проверяет вычисление площади и периметра фигуры
+
+        Проверка на равенство двух чисел с плавающей точкой
+        происходит с заданной точностью epsilon
+        """
+
         triangle = Triangle(side_a, side_b, side_c)
 
         assert triangle.name == DefaultFigureName.TRIANGLE
@@ -31,6 +37,13 @@ class TestTriangle:
         ]
     )
     def test_change_sides_and_recalculate_area_and_perimeter(self, side_a, side_b, side_c, area, perimeter):
+        """Проверяет вычисление площади и периметра фигуры,
+        при изменении стороны фигуры
+
+        Проверка на равенство двух чисел с плавающей точкой
+        происходит с заданной точностью epsilon
+        """
+
         triangle = Triangle(side_a, side_b, side_c)
 
         assert triangle.name == DefaultFigureName.TRIANGLE
@@ -65,6 +78,8 @@ class TestTriangle:
         ]
     )
     def test_set_other_name(self, side_a, side_b, side_c, area, perimeter, name):
+        """Проверяет установку названия фигуры"""
+
         triangle = Triangle(side_a, side_b, side_c, name=name)
 
         assert triangle.name == name
@@ -79,6 +94,9 @@ class TestTriangle:
         ]
     )
     def test_invalid_triangle(self, side_a, side_b, side_c):
+        """Проверяет выкидывание исключения,
+        при несуществующем треугольнике
+        """
         with pytest.raises(ValueError, match=TextException.INVALID_TRIANGLE):
             triangle = Triangle(side_a, side_b, side_c)
 
@@ -92,6 +110,9 @@ class TestTriangle:
         ]
     )
     def test_negative_and_zero_sides(self, side_a, side_b, side_c):
+        """Проверяет выкидывание исключения,
+        при передаче аргумента с невалидными значениями
+        """
         with pytest.raises(ValueError, match=TextException.ZERO_OR_NEGATIVE_SIDE):
             triangle = Triangle(side_a, side_b, side_c)
 
@@ -104,8 +125,19 @@ class TestTriangle:
             (3, [5], 4),
             ({'5': 5}, 3, 4),
             (None, None, None)
+        ],
+        ids=[
+            'string_value',
+            'bool_value',
+            'triangle_object',
+            'list',
+            'dict',
+            'none_value',
         ]
     )
     def test_test_invalid_type_of_sides(self, side_a, side_b, side_c):
+        """Проверяет выкидывание исключения,
+        при передаче аргумента с невалидными типами
+        """
         with pytest.raises(ValueError, match=TextException.NOT_A_NUMBER):
             triangle = Triangle(side_a, side_b, side_c)

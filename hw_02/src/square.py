@@ -30,7 +30,8 @@ class Square(Rectangle):
         self._validate_values(value)
         self._side_a = value
         self._side_b = value
-        self._recalculate_perimeter_and_area()
+        self._perimeter = self.calculate_perimeter()
+        self._area = self.calculate_area()
 
     @Rectangle.side_a.setter
     def side_a(self, value):

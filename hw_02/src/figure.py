@@ -106,12 +106,6 @@ class Figure(ABC):
 
         return self.add_area(other_figure)
 
-    def _recalculate_perimeter_and_area(self):
-        """Пересчитывает периметр и площадь"""
-
-        self._perimeter = self.calculate_perimeter()
-        self._area = self.calculate_area()
-
     def _validate_values(self, *values):
         """Валидирует значение стороны фигуры"""
 

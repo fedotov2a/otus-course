@@ -14,6 +14,12 @@ class TestSquare:
         ]
     )
     def test_positive_sides(self, side, area, perimeter):
+        """Проверяет вычисление площади и периметра фигуры
+
+        Проверка на равенство двух чисел с плавающей точкой
+        происходит с заданной точностью epsilon
+        """
+
         square = Square(side)
         print(square)
 
@@ -28,6 +34,13 @@ class TestSquare:
         ]
     )
     def test_change_sides_and_recalculate_area_and_perimeter(self, side, area, perimeter):
+        """Проверяет вычисление площади и периметра фигуры,
+        при изменении стороны фигуры
+
+        Проверка на равенство двух чисел с плавающей точкой
+        происходит с заданной точностью epsilon
+        """
+
         square = Square(side)
 
         assert square.name == DefaultFigureName.SQUARE
@@ -48,6 +61,8 @@ class TestSquare:
         ]
     )
     def test_set_other_name(self, side, area, perimeter, name):
+        """Проверяет установку названия фигуры"""
+
         square = Square(side, name=name)
 
         assert square.name == name
@@ -63,6 +78,9 @@ class TestSquare:
         ]
     )
     def test_negative_and_zero_sides(self, side):
+        """Проверяет выкидывание исключения,
+        при передаче аргумента с невалидным значением
+        """
         with pytest.raises(ValueError, match=TextException.ZERO_OR_NEGATIVE_SIDE):
             square = Square(side)
 
@@ -75,8 +93,19 @@ class TestSquare:
             [5],
             {'5': 5},
             None,
+        ],
+        ids=[
+            'string_value',
+            'bool_value',
+            'square_object',
+            'list',
+            'dict',
+            'none_value',
         ]
     )
     def test_test_invalid_type_of_sides(self, side):
+        """Проверяет выкидывание исключения,
+        при передаче аргумента с невалидным типом
+        """
         with pytest.raises(ValueError, match=TextException.NOT_A_NUMBER):
             square = Square(side)
