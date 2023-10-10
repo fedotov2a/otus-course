@@ -17,6 +17,6 @@ class BaseApi:
         url = self.base_url + endpoint
         return requests.put(url, data, json_, **kwargs)
 
-    def delete(self, endpoint, params=None, **kwargs):
+    def delete(self, endpoint, **kwargs):
         url = self.base_url + endpoint
-        return requests.delete(url, params, **kwargs)
+        return requests.delete(url, **kwargs)
