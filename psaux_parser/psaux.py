@@ -55,10 +55,10 @@ class PsAux:
         return len([p for p in self.process_list if p.user == user])
 
     def total_virtual_memory_size(self):
-        return round(sum(p.vsz for p in self.process_list) / 2**23, 2)
+        return round(sum(p.vsz for p in self.process_list) / 2**10, 2)
 
     def total_resident_set_size(self):
-        return round(sum(p.rss for p in self.process_list) / 2**23, 2)
+        return round(sum(p.rss for p in self.process_list) / 2**10, 2)
 
     def total_cpu_percent(self):
         return round(sum(p.cpu_percent for p in self.process_list), 2)
