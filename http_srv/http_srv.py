@@ -6,7 +6,7 @@ from http import HTTPStatus
 
 end_of_stream = '\r\n\r\n'
 
-def handle_client(connection):
+def handle_client(connection, client_address):
     client_data = ''
 
     with connection:
@@ -71,7 +71,7 @@ def handle_client(connection):
             'Content-Type: text/html; charset=UTF-8\r\n'
             '\r\n'
             f'Request Method: {method}\r\n'
-            f'Request Source: ({host[0]}, {host[1]})\r\n'
+            f'Request Source: ({client_address})\r\n'
             f'Response Status: {code} {status_code}\r\n'
         )
 
@@ -87,6 +87,6 @@ with socket.socket() as server_sock:
     server_sock.listen();
 
     while True:
-        client_sock, clientAddress = server_sock.accept();
-        handle_client(client_sock)
+        client_sock, client_address = server_sock.accept();
+        handle_client(client_sock, client_address)
         print(f'Sent data to {client_sock}');
