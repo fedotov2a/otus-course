@@ -27,7 +27,6 @@ def handle_client(connection, client_address):
 
         templates = [
             re.compile('(?P<method>\w+)\s(\/.*status=(?P<code>\d+).*|.*[^status].*)\\r$'),
-            re.compile('^Host:\s(?P<host>\S+)\\r$'),
             re.compile('^(?P<header>\S+:.*)\\r$')
         ]
 
@@ -49,9 +48,7 @@ def handle_client(connection, client_address):
 
                 res = res.groupdict()
 
-                if 'host' in res:
-                    host = res['host'].split(':')
-                elif 'header' in res and 'Host' not in res['header']:
+                if 'header' in res:
                     headers.append(res['header'])
                 elif 'method' in res and 'code' in res:
                     method = res['method']
