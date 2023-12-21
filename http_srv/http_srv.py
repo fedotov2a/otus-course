@@ -69,6 +69,7 @@ def handle_client(connection):
         http_response = (
             'HTTP/1.0 200 OK\r\n'
             'Content-Type: text/html; charset=UTF-8\r\n'
+            '\r\n'
             f'Request Method: {method}\r\n'
             f'Request Source: ({host[0]}, {host[1]})\r\n'
             f'Response Status: {code} {status_code}\r\n'
@@ -77,8 +78,8 @@ def handle_client(connection):
         for header in headers:
             http_response += header + '\r\n'
 
-        http_response += '\r\n'
-        connection.send(http_response.encode('utf-8') + b'\r\n')
+        http_response += '\r\n\r\n'
+        connection.send(http_response.encode('utf-8'))
 
 
 with socket.socket() as server_sock:
