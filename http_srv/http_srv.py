@@ -59,9 +59,9 @@ def handle_client(connection, client_address):
 
         if status_code is None:
             code = 200
-            status_code = 'OK'
-        else:
-            status_code = status_code.phrase
+            status_code = HTTPStatus.OK
+
+        status_code = status_code.phrase
 
         http_response = (
             'HTTP/1.0 200 OK\r\n'
